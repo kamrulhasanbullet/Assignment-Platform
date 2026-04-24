@@ -1,18 +1,10 @@
+import DashboardShell from "@/components/layout/DashboardShell";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { authOptions } from "@/lib/auth";
+import StatCards from "@/modules/analytics/components/StatCards";
+import { getAssignmentsStats } from "@/modules/assignment/actions";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "@/src/lib/auth";
-import DashboardShell from "@/src/components/layout/DashboardShell";
-import StatCards from "@/src/modules/analytics/components/StatCards";
-import {
-  getAssignmentsStats,
-  getSubmissionsStats,
-} from "@/src/modules/assignment/actions";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/src/components/ui/card";
 
 export default async function InstructorDashboard() {
   const session = await getServerSession(authOptions);

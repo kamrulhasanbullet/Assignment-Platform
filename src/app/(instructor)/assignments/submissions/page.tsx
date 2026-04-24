@@ -1,18 +1,18 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "@/src/lib/auth";
-import SubmissionTable from "@/src/modules/submission/components/SubmissionTable";
-import { getAllSubmissions } from "@/src/modules/submission/actions";
+import { authOptions } from "@/lib/auth";
+import SubmissionTable from "@/modules/submission/components/SubmissionTable";
+import { getAllSubmissions } from "@/modules/submission/actions";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { Button } from "@/src/components/ui/button";
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Badge } from "@/src/components/ui/badge";
-import { getStatsByStatus } from "@/src/modules/submission/actions";
+import { Badge } from "@/components/ui/badge";
+import { getStatsByStatus } from "@/modules/submission/actions";
 
 export default async function SubmissionsPage() {
   const session = await getServerSession(authOptions);

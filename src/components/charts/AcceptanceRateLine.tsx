@@ -14,7 +14,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
+} from "@/components/ui/card";
 import { format } from "date-fns";
 
 interface AcceptanceRateLineProps {

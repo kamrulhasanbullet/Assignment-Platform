@@ -1,17 +1,17 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import AssignmentForm from "@/src/components/forms/AssignmentForm";
-import { createAssignment } from "@/src/modules/assignment/actions";
-import { Button } from "@/src/components/ui/button";
+import AssignmentForm from "@/components/forms/AssignmentForm";
+import { createAssignment } from "@/modules/assignment/actions";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { useToast } from "@/src/components/ui/use-toast";
-import AISuggestions from "@/src/components/AISuggestions";
+} from "@/components/ui/card";
+import { useToast } from "@/components/ui/use-toast";
+import AISuggestions from "@/components/AISuggestions";
 
 export default function CreateAssignment() {
   const router = useRouter();

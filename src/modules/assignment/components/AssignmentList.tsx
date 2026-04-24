@@ -2,16 +2,16 @@
 import { useState, useEffect } from "react";
 import { AssignmentCard } from "./AssignmentCard";
 import { getAssignments } from "../actions";
-import { Assignment } from "@/src/types/assignment";
-import { Card, CardContent } from "@/src/components/ui/card";
-import { Input } from "@/src/components/ui/input";
+import { Assignment } from "@/types/assignment";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/src/components/ui/select";
+} from "@/components/ui/select";
 import { FileText } from "lucide-react";
 import { FileText } from "lucide-react";
 

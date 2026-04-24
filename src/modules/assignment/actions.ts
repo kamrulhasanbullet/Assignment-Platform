@@ -1,58 +1,65 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { z } from "zod";
-import { auth } from "@/src/lib/auth";
-import { db } from "@/src/lib/db";
-import { eq, desc, and } from "drizzle-orm";
-import { assignments, submissions, users } from "@/src/lib/schema";
-import { createAssignmentSchema } from "@/src/types/assignment";
+import { auth } from "@/lib/auth";
+import connectDB from "@/lib/db";
+import Assignment from "@/models/Assignment";
+import Submission from "@/models/Submission";
+import { createAssignmentSchema } from "@/types/assignment";
 
 export async function getAssignments() {
-  const data = await db.query.assignments.findMany({
-    orderBy: desc(assignments.createdAt),
-    with: {
-      submissions: true,
-    },
-  });
+  await connectDB();
 
-  return data.map((assignment) => ({
-    ...assignment,
-    submissionsCount: assignment.submissions.length,
-  }));
+  const assignments = (await Assignment.find()
+    .sort({ createdAt: -1 })
+    .lean()) as any[];
+
+  const assignmentsWithCount = await Promise.all(
+    assignments.map(async (assignment) => {
+      const submissionsCount = await Submission.countDocuments({
+        assignmentId: assignment._id,
+      });
+      return {
+        ...assignment,
+        id: assignment._id.toString(),
+        submissionsCount,
+      };
+    }),
+  );
+
+  return assignmentsWithCount;
 }
 
 export async function getAssignmentById(id: string) {
-  const assignment = await db.query.assignments.findFirst({
-    where: eq(assignments.id, id),
-    with: {
-      submissions: {
-        with: {
-          user: true,
-        },
-      },
-    },
-  });
+  await connectDB();
 
+  const assignment = (await Assignment.findById(id).lean()) as any;
   if (!assignment) return null;
+
+  const submissions = (await Submission.find({ assignmentId: id })
+    .populate("studentId", "name email")
+    .lean()) as any[];
 
   return {
     ...assignment,
-    submissionsCount: assignment.submissions.length,
+    id: assignment._id.toString(),
+    submissions: submissions.map((s) => ({
+      ...s,
+      id: s._id.toString(),
+    })),
+    submissionsCount: submissions.length,
   };
 }
 
 export async function getAssignmentsStats() {
-  const total = await db.select({ count: count() }).from(assignments);
-  const active = await db
-    .select({ count: count() })
-    .from(assignments)
-    .where(lt(assignments.deadline, new Date().toISOString()));
+  await connectDB();
 
-  return {
-    total: total[0]?.count || 0,
-    active: active[0]?.count || 0,
-  };
+  const total = await Assignment.countDocuments();
+  const active = await Assignment.countDocuments({
+    deadline: { $gt: new Date() },
+  });
+
+  return { total, active };
 }
 
 export async function createAssignment(formData: FormData) {
@@ -68,13 +75,13 @@ export async function createAssignment(formData: FormData) {
     deadline: formData.get("deadline"),
   });
 
-  const { title, description, difficulty, deadline } = validatedFields;
+  await connectDB();
 
-  await db.insert(assignments).values({
-    title,
-    description,
-    difficulty: difficulty as "beginner" | "intermediate" | "advanced",
-    deadline: new Date(deadline),
+  await Assignment.create({
+    title: validatedFields.title,
+    description: validatedFields.description,
+    difficulty: validatedFields.difficulty,
+    deadline: new Date(validatedFields.deadline),
     instructorId: session.user.id,
   });
 

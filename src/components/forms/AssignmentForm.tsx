@@ -1,34 +1,34 @@
 "use client";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/src/components/ui/button";
-import { Input } from "@/src/components/ui/input";
-import { Textarea } from "@/src/components/ui/textarea";
-import { Label } from "@/src/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/src/components/ui/select";
+} from "@/components/ui/select";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { useToast } from "@/src/components/ui/use-toast";
-import { Calendar } from "@/src/components/ui/calendar";
+} from "@/components/ui/card";
+import { useToast } from "@/components/ui/use-toast";
+import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { CalendarIcon, Wand2 } from "lucide-react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/src/components/ui/popover";
-import { cn } from "@/src/lib/utils";
-import { Button as CalendarButton } from "@/src/components/ui/button";
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import { Button as CalendarButton } from "@/components/ui/button";
 
 interface AssignmentFormProps {
   onSubmit: (formData: FormData) => Promise<void>;

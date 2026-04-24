@@ -1,24 +1,24 @@
 "use client";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/src/components/ui/button";
-import { Input } from "@/src/components/ui/input";
-import { Label } from "@/src/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/src/components/ui/select";
+} from "@/components/ui/select";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/src/components/ui/card";
-import { useToast } from "@/src/components/ui/use-toast";
+} from "@/components/ui/card";
+import { useToast } from "@/components/ui/use-toast";
 import { registerUser } from "../actions";
 import { Mail, User, Lock, GraduationCap, UserCog } from "lucide-react";
 

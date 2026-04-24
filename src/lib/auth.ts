@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import connectDB from "./db";
 import User from "../models/User";
+import { getServerSession } from "next-auth";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -58,3 +59,5 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
 };
+
+export const auth = () => getServerSession(authOptions);

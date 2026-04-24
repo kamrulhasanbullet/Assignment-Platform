@@ -1,17 +1,17 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "@/src/lib/auth";
-import { getAssignmentById } from "@/src/modules/assignment/actions";
-import { AssignmentCard } from "@/src/modules/assignment/components/AssignmentCard";
-import { getSubmissionsByAssignmentId } from "@/src/modules/submission/actions";
-import SubmissionTable from "@/src/modules/submission/components/SubmissionTable";
+import { authOptions } from "@/lib/auth";
+import { getAssignmentById } from "@/modules/assignment/actions";
+import { AssignmentCard } from "@/modules/assignment/components/AssignmentCard";
+import { getSubmissionsByAssignmentId } from "@/modules/submission/actions";
+import SubmissionTable from "@/modules/submission/components/SubmissionTable";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { Button } from "@/src/components/ui/button";
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 interface Props {

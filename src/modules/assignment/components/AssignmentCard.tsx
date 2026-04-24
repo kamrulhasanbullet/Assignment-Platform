@@ -1,19 +1,19 @@
 "use client";
 import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
-import { Button } from "@/src/components/ui/button";
-import { Badge } from "@/src/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
+} from "@/components/ui/card";
 import { Calendar, Clock, ExternalLink, FileText } from "lucide-react";
-import { Assignment } from "@/src/types/assignment";
+import { Assignment } from "@/types/assignment";
 import { useSession } from "next-auth/react";
-import { getSubmissionStatus } from "@/src/modules/submission/actions";
+import { getSubmissionStatus } from "@/modules/submission/actions";
 
 interface AssignmentCardProps {
   assignment: Assignment;

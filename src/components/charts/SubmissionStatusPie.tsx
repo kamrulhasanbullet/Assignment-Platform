@@ -12,8 +12,8 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { Badge } from "@/src/components/ui/badge";
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface SubmissionStatusPieProps {
   data: Array<{

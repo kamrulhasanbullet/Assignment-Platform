@@ -1,8 +1,8 @@
 "use client";
-import SubmissionStatusPie from "@/src/components/charts/SubmissionStatusPie";
-import DifficultyBar from "@/src/components/charts/DifficultyBar";
-import AcceptanceRateLine from "@/src/components/charts/AcceptanceRateLine";
-import { AnalyticsData } from "@/src/types/analytics";
+import SubmissionStatusPie from "@/components/charts/SubmissionStatusPie";
+import DifficultyBar from "@/components/charts/DifficultyBar";
+import AcceptanceRateLine from "@/components/charts/AcceptanceRateLine";
+import { AnalyticsData } from "@/types/analytics";
 
 interface ChartsProps {
   analyticsData: AnalyticsData;

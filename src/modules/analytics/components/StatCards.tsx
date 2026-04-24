@@ -4,10 +4,10 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { Badge } from "@/src/components/ui/badge";
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { TrendingUp, Users, FileText, CheckCircle, Clock } from "lucide-react";
-import { AssignmentStats, SubmissionStats } from "@/src/types/analytics";
+import { AssignmentStats, SubmissionStats } from "@/types/analytics";
 
 interface StatCardsProps {
   assignmentsStats: AssignmentStats;

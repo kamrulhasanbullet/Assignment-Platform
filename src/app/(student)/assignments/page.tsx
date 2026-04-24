@@ -1,16 +1,16 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { getAssignments } from "@/src/modules/assignment/actions";
-import { AssignmentCard } from "@/src/modules/assignment/components/AssignmentCard";
-import { Button } from "@/src/components/ui/button";
+import { getAssignments } from "@/modules/assignment/actions";
+import { AssignmentCard } from "@/modules/assignment/components/AssignmentCard";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { Badge } from "@/src/components/ui/badge";
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 

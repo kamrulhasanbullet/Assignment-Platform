@@ -9,17 +9,21 @@ export interface IUser extends Document {
   createdAt: Date;
 }
 
-const UserSchema: Schema = new Schema({
+const UserSchema: Schema<IUser> = new Schema({
   email: { type: String, required: true, unique: true },
   name: { type: String, required: true },
   password: { type: String, required: true },
-  role: { type: String, enum: ["STUDENT", "INSTRUCTOR"], default: "STUDENT" },
+  role: {
+    type: String,
+    enum: ["STUDENT", "INSTRUCTOR"],
+    default: "STUDENT",
+  },
   createdAt: { type: Date, default: Date.now },
 });
 
-UserSchema.pre("save", async function (next) {
+UserSchema.pre<IUser>("save", async function (next) {
   if (!this.isModified("password")) return next();
-  this.password = await bcrypt.hash(this.password, 12);
+  this.password = await bcrypt.hash(this.password as string, 12);
   next();
 });
 

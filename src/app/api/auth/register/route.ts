@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/db";
 import User from "@/models/User";
-import bcrypt from "bcryptjs";
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,16 +8,38 @@ export async function POST(request: NextRequest) {
 
     const { name, email, password, role } = await request.json();
 
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
+    // Validation
+    if (!name || !email || !password || !role) {
       return NextResponse.json(
-        { error: "User already exists" },
+        { error: "All fields are required" },
         { status: 400 },
       );
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12);
-    const user = new User({ name, email, password: hashedPassword, role });
+    if (password.length < 6) {
+      return NextResponse.json(
+        { error: "Password must be at least 6 characters" },
+        { status: 400 },
+      );
+    }
+
+    // Check existing user
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return NextResponse.json(
+        { error: "User already exists with this email" },
+        { status: 400 },
+      );
+    }
+
+    // role uppercase (student → STUDENT)
+    const user = new User({
+      name,
+      email,
+      password,
+      role: role.toUpperCase(),
+    });
+
     await user.save();
 
     return NextResponse.json(
@@ -26,6 +47,10 @@ export async function POST(request: NextRequest) {
       { status: 201 },
     );
   } catch (error) {
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+    console.error("Register error:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
   }
 }

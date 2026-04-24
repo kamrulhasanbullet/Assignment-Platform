@@ -5,21 +5,21 @@ import { useParams, useRouter } from "next/navigation";
 import {
   getAssignmentById,
   getMySubmission,
-} from "@/src/modules/assignment/actions";
-import { createSubmission } from "@/src/modules/submission/actions";
-import AssignmentCard from "@/src/modules/assignment/components/AssignmentCard";
-import SubmissionForm from "@/src/components/forms/SubmissionForm";
-import FeedbackPanel from "@/src/modules/submission/components/FeedbackPanel";
+} from "@/modules/assignment/actions";
+import { createSubmission } from "@/modules/submission/actions";
+import AssignmentCard from "@/modules/assignment/components/AssignmentCard";
+import SubmissionForm from "@/components/forms/SubmissionForm";
+import FeedbackPanel from "@/modules/submission/components/FeedbackPanel";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { Button } from "@/src/components/ui/button";
-import { Badge } from "@/src/components/ui/badge";
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ExternalLink } from "lucide-react";
-import { useToast } from "@/src/components/ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 interface Props {}
 

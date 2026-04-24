@@ -4,8 +4,8 @@ import { redirect } from "next/navigation";
 import { AuthError } from "next-auth";
 import { hash } from "bcryptjs";
 import { z } from "zod";
-import { getUserByEmail } from "@/src/lib/db";
-import { createUser } from "@/src/lib/db";
+import { getUserByEmail } from "@/lib/db";
+import { createUser } from "@/lib/db";
 
 const registerSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),

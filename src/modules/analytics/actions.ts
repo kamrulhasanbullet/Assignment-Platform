@@ -1,8 +1,8 @@
 "use server";
 
-import { db } from "@/src/lib/db";
-import { submissions, assignments } from "@/src/lib/schema";
-import { AnalyticsData } from "@/src/types/analytics";
+import { db } from "@/lib/db";
+import { submissions, assignments } from "@/lib/schema";
+import { AnalyticsData } from "@/types/analytics";
 import { sql, desc, eq, gt, gte } from "drizzle-orm";
 
 export async function getAnalyticsData(): Promise<AnalyticsData> {

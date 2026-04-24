@@ -1,9 +1,9 @@
 "use server";
 
-import { auth } from "@/src/lib/auth";
-import { db } from "@/src/lib/db";
+import { auth } from "@/lib/auth";
+import { db } from "@/lib/db";
 import { eq } from "drizzle-orm";
-import { submissions } from "@/src/lib/schema";
+import { submissions } from "@/lib/schema";
 import { z } from "zod";
 
 const updateStatusSchema = z.object({

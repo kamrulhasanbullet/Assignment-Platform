@@ -14,7 +14,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
+} from "@/components/ui/card";
 
 interface DifficultyBarProps {
   data: Array<{

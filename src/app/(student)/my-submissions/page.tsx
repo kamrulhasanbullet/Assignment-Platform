@@ -1,16 +1,16 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { getMySubmissions } from "@/src/modules/submission/actions";
-import SubmissionTable from "@/src/modules/submission/components/SubmissionTable";
+import { getMySubmissions } from "@/modules/submission/actions";
+import SubmissionTable from "@/modules/submission/components/SubmissionTable";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { Badge } from "@/src/components/ui/badge";
-import { Button } from "@/src/components/ui/button";
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 

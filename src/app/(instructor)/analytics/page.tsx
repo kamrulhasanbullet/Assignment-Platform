@@ -1,16 +1,16 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "@/src/lib/auth";
-import StatCards from "@/src/modules/analytics/components/StatCards";
-import Charts from "@/src/modules/analytics/components/Charts";
-import { getAnalyticsData } from "@/src/modules/analytics/actions";
-import DashboardShell from "@/src/components/layout/DashboardShell";
+import { authOptions } from "@/lib/auth";
+import StatCards from "@/modules/analytics/components/StatCards";
+import Charts from "@/modules/analytics/components/Charts";
+import { getAnalyticsData } from "@/modules/analytics/actions";
+import DashboardShell from "@/components/layout/DashboardShell";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
+} from "@/components/ui/card";
 
 export default async function AnalyticsPage() {
   const session = await getServerSession(authOptions);

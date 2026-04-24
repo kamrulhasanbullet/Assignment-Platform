@@ -3,9 +3,9 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { Badge } from "@/src/components/ui/badge";
-import { Submission } from "@/src/types/submission";
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Submission } from "@/types/submission";
 import { formatDistanceToNow } from "date-fns";
 import { MessageCircle, Calendar } from "lucide-react";
 

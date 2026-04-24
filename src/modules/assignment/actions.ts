@@ -62,6 +62,19 @@ export async function getAssignmentsStats() {
   return { total, active };
 }
 
+export async function getSubmissionsStats() {
+  await connectDB();
+
+  const total = await Submission.countDocuments();
+  const accepted = await Submission.countDocuments({ status: "Accepted" });
+  const pending = await Submission.countDocuments({ status: "Pending" });
+  const needsImprovement = await Submission.countDocuments({
+    status: "Needs Improvement",
+  });
+
+  return { total, accepted, pending, needsImprovement };
+}
+
 export async function createAssignment(formData: FormData) {
   const session = await auth();
   if (!session || session.user.role !== "INSTRUCTOR") {

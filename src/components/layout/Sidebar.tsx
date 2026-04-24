@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/collapsible";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface SidebarProps {
   role: "INSTRUCTOR" | "STUDENT";

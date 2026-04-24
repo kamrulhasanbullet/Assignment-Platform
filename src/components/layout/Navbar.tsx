@@ -2,10 +2,18 @@
 import { useSession, signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { GraduationCap, UserCog } from "lucide-react";
+import { GraduationCap, LogOut, Settings, User, UserCog } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export default function Navbar() {
   const { data: session } = useSession();
